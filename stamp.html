@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+
+    <title>多良間島スタンプラリー</title>
+    <link rel="stylesheet" href="css/reset2.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- googleフォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Kiwi+Maru:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
+
+    <!-- スマホ用アイコン -->
+    <link rel="apple-touch-icon" href="img/icon.png" />
+
+</head>
+<body>
+    <header>
+        <h1>多良間島スタンプラリー</h1>
+        <p id="player"></p>
+    </header>
+    <main>
+        <div class="inner">
+            <!-- 左側の情報エリア -->
+            <div id="disc_area">
+                <div class="title_wrap">
+                    <h2>訪問したらチェックしよう！</h2>
+                    <p class="small">全部チェック出来たらあなたも多良間人の仲間入り</p>
+                </div>
+                <div class="allitem_wrap">
+                    <div class="item_wrap">
+                        <div class="item" id="t001">
+                            <img src="img/plane.png" alt="" class="icon">
+                            <p class="spotname">多良間空港</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">多良間島の玄関口</p>
+                            <img src="img/kuukou.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t002">
+                            <img src="img/castle.png" alt="" class="icon">
+                            <p class="spotname">すまむぬたらま</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">食事・お土産・レンタサイクル等</p>
+                            <img src="img/suma.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t003">
+                            <img src="img/port.png" alt="" class="icon">
+                            <p class="spotname">前泊港 (西側)</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">ウミガメが見れるかも！？</p>
+                            <img src="img/mae.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t004">
+                            <img src="img/tree.png" alt="" class="icon">
+                            <p class="spotname">宮古市の森</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">緑豊かな森とビーチ</p>
+                            <img src="img/miyakomori.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t005">
+                            <img src="img/shrine.png" alt="" class="icon">
+                            <p class="spotname">普天間御嶽</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">目の前は港へ続く絶景の道</p>
+                            <img src="img/futen.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t006">
+                            <img src="img/glasses.png" alt="" class="icon">
+                            <p class="spotname">八重山遠見台</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">多良間島が360度見渡せる</p>
+                            <img src="img/toomi.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t007">
+                            <img src="img/sandals.png" alt="" class="icon">
+                            <p class="spotname">ふる里海浜公園</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">ビーチにBBQもできる公園</p>
+                            <img src="img/kaihin.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="item_wrap">
+                        <div class="item" id="t008">
+                            <img src="img/don.png" alt="" class="icon">
+                            <p class="spotname">たねび食堂</p>
+                            <div class="check_area"></div>
+                        </div>
+                        <div class="item_detail">
+                            <p class="normal">絶品！多良間そばのお店</p>
+                            <img src="img/soba.jpg" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 右側のマップエリア -->
+            <div id="map_area">
+                まっぷえりあ
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="sun_wrap">
+            <p class="sun">日の出時刻 [<span id="sunrise"></span> ]</p>
+            <img src="img/sun.png" alt="">
+            <p class="sun">日の入り時刻 [<span id="sunset"></span> ]</p>
+        </div>
+        <div class="copyright">
+            &copy; 2024 CHISAXWORKS
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module" src="js/map.js"></script>
+    <script src="js/weather.js"></script>
+</body>
+</html>

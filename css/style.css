@@ -1,0 +1,277 @@
+body {
+    font-family: "Kiwi Maru", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+header {
+    color: #ffffff;
+    background-color: #97d4d9;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#player {
+    position: absolute;
+    right: 18px;
+    top: 11px;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #46c5c5;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+main {
+    height: calc(100vh - 80px);
+}
+
+.inner {
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+}
+
+footer {
+    color: #ffffff;
+    background-color: #97d4d9;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.sun_wrap {
+    display: flex;
+    column-gap: 10px;
+    font-size: 12px;
+}
+
+.sun_wrap img {
+    width: 15px;
+}
+
+.copyright {
+    font-size: 10px;
+}
+
+/* フォント */
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+p.spotname {
+    font-size: 18px;
+}
+
+p.small {
+    font-size: 12px;
+}
+
+/* 左側（スタンプラリー） */
+#disc_area{
+    width: 400px;
+    height: 100%;
+    overflow: auto;
+    background-color: #e5f4f5;
+}
+
+.title_wrap{
+    width: fit-content;
+    margin: 0 auto;
+    padding: 30px 20px 10px;
+    text-align: center;
+}
+
+.allitem_wrap {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.item_wrap {
+    width: 280px;
+}
+
+.item {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: default;
+}
+
+.item:hover, .active {
+    background-color: #ffffda;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.check_area {
+    background-color: #cccccc;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.check_area:hover {
+    background-color: #46c5c5;
+}
+
+.check_area img {
+    width: 100%;
+}
+
+.item_detail {
+    background-color: #46c5c5;
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    display: none;
+}
+
+.item_detail img {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* 右側（マップ） */
+#map_area{
+    width: calc(100vw - 400px);
+    height: 100%;
+    background-color: aliceblue;
+}
+
+
+/* googlemap styleカスタマイズ */
+.gm-style .gm-style-iw-c {
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.gm-style .gm-style-iw-d{
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Kiwi Maru", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+/* ログイン画面 */
+.index-footer {
+    justify-content: center;
+}
+
+.login-wrap {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    font-size: 18px;
+    text-align: center;
+    /* メインの高さ調整の関係でmargin上下は0 Paddingで調整*/
+    margin: 0 auto;
+    padding: 50px 10px;
+}
+
+.login-wrap h2 {
+    font-weight: 500;
+    margin-bottom: 15px;
+
+}
+
+.triangle {
+    background-color: #97d4d9;
+    width: 20px;
+    height: 15px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    margin: 0 auto;
+}
+
+#username {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #eeeeee;
+    width: 100%;
+    font-size: 16px;
+}
+
+#username::placeholder {
+    font-size: 14px;
+  }
+
+#login {
+    background-color: #97d4d9;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+#login:hover {
+    opacity: 0.8;
+}
+
+/* --------------------
+    for SP size 
+-------------------- */
+@media screen and (max-width: 768px){
+
+    .inner {
+        flex-direction: column;
+    }
+
+    header {
+        justify-content: flex-start;
+        padding-left: 20px;
+    }
+
+    h1 {
+        font-size: 21px;
+    }
+
+    #player {
+        font-size: 12px;
+        right: 14px;
+        top: 14px;
+    }
+
+    #disc_area{
+        width: 100%;;
+    }
+
+    #map_area{
+        width: 100%;
+    }
+
+    .title_wrap {
+        padding: 20px 10px 0;
+    }
+
+}
