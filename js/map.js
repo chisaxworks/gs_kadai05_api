@@ -1,7 +1,15 @@
-/* ----- LocalStorageに名前がない場合 -----*/
+/* ----- LocalStorageの名前 -----*/
+// 初期化
+let lsData,uname,createDate;
+
+//localstorage戻し
+lsData = JSON.parse(localStorage.getItem("name"));
+
 if(localStorage.hasOwnProperty("name")){
-    const username = localStorage.getItem("name");
-    $("#player").html(`${username} さん`);
+    uname = lsData.username;
+    createDate = lsData.createDate;
+
+    $("#player").html(`${uname} さん`);
 }else{
     location.href = "index.html";
 }
@@ -203,8 +211,6 @@ initMap();
 
 /* ----- itemクリックイベント ----- */
 
-let oldGetId = "";
-
 $('.item').on('click', function() {
 
     //クリックしたidに紐づくtaramapのindexをとる
@@ -239,22 +245,87 @@ $('.item').on('click', function() {
 
 });
 
+/* ----- Firebase部分 -----*/
+
+//切り出したAPIKeyをimport
+import firebaseConfig from "./firebaseApiKey.js";
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, collection, doc, addDoc, setDoc, getDoc, updateDoc} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"
+
+// Your web app's Firebase configuration
+// ->firebaseApiKeyに移動済
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); //Firestoreに接続
+
+// 初期DB
+const stampInitial = {
+    username: uname,
+    t001: false,
+    t002: false,
+    t003: false,
+    t004: false,
+    t005: false,
+    t006: false,
+    t007: false,
+    t008: false,
+}
+
+/* ----- リロード時にDBから取り出し -----*/
+// データ取得
+const docRef = doc(db, "stamp", createDate);
+const docSnap = await getDoc(docRef);
+const stampDB = docSnap.data();
+console.log(stampDB,"docSnapDB");
+
+// 存在有無で分岐
+if (docSnap.exists()) {
+    console.log("既存あり");
+
+    // // プロパティをループして、trueのプロパティに対して処理を行う
+    for (let key in stampDB) {
+        if (key !== "username" && stampDB[key] === true) {
+            
+            // trueの場合はチェックアイコン処理のところと同じ
+            $("#"+key).find(".check_area").html('<img src="img/checked.png" alt="済"></img>'); 
+            $("#"+key).find(".check_area").addClass('done');
+        }
+    }
+
+} else {
+    console.log("既存なし");
+    // 既存がない場合はドキュメント単位で追加
+    setDoc(docRef,stampInitial);
+}
+
 /* ----- checkクリックイベント -----*/
 
 $(".check_area").on("click", function(event){
 
+    // チェックをいれる処理
     if($(this).hasClass('done')){
         console.log("終わってます"); //すでにチェックが入っていたらアラートを出さない
     }else if(!confirm("チェックを入れてよろしいですか？")){
         return false;
     }else{
-        event.stopPropagation();
-        $(this).html('<img src="img/checked.png" alt="済"></img>');
-        $(this).addClass('done');
+        // チェックアイコン処理
+        event.stopPropagation(); //.itemをクリックしたときの動きはさせない
+        $(this).html('<img src="img/checked.png" alt="済"></img>'); // checkアイコン更新
+        $(this).addClass('done'); // 今後アラート出さないためのClass設定
+
+        // オブジェクト更新処理
+        const pId = $(this).parent().attr("id"); // 親のid取得
+        console.log(pId,"親のID");
+
+        stampDB[pId] = true; // 親のidをキーにstampDB（firebaseからgetしたobj）の値更新
+
+        // firestoreに入れる処理
+        setDoc(docRef,stampDB);
+
     }
 });
-
-/* 今後やりたい作業
-・位置が近くなった時だけクリックできる（これはテストが悩ましい）
-・リロードしてもデータが消えないようにしたい（firebaseかlocalstorageか）
-*/
