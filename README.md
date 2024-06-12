@@ -1,0 +1,1 @@
+# gs_kadai05_api
