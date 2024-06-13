@@ -1,5 +1,6 @@
 # ①課題番号-プロダクト名
-- 6-Mapアプリ（Google Map API および Open Meteo APIを利用）
+- 6-Mapアプリ
+- Google Map API（Maps JavaScript API）、Open Meteo API、Firebase（Cloud Firestore）、LocalStorageを利用
 
 ## ②課題内容（どんな作品か）
 
@@ -48,4 +49,10 @@
 
 ## ⑦質問・疑問・感想、シェアしたいこと等なんでも
 
+- 今回はかなり各公式ドキュメントにお世話になりました。公式ドキュメントから使い方を拾うやり方に慣れることができたと思います。
+    - 最初にBing Map API、次にGoogle Map API（Maps JavaScript API）、Cloud Firestore...
+
 - [参考記事]
+    - Google MapのURLから拾って作ったピン（Google Map用語ではマーカー）がずれる問題はGeocordingを使って解決しました。
+        - 記事→ https://qiita.com/0x50/items/2d440f5efba412c39f9d
+        - Geocording→ https://www.geocoding.jp/
