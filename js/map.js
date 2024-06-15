@@ -18,7 +18,7 @@ if(localStorage.hasOwnProperty("name")){
 
 // Dynamic Library Import
 (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-    key: "",
+    key: "AIzaSyDoUcnoTa8KcHv9Ahxs9kOtZUCZ-YHmR94",
     v: "weekly",
     region: "JP",
     language: "ja"
@@ -276,16 +276,19 @@ const stampInitial = {
     t008: false,
 }
 
+// stampDB初期化
+let stampDB = "";
+
 /* ----- リロード時にDBから取り出し -----*/
 // データ取得
 const docRef = doc(db, "stamp", createDate);
 const docSnap = await getDoc(docRef);
-const stampDB = docSnap.data();
-console.log(stampDB,"docSnapDB");
 
 // 存在有無で分岐
 if (docSnap.exists()) {
     console.log("既存あり");
+    stampDB = docSnap.data();
+    console.log(stampDB,"既存ありstampDB");
 
     // // プロパティをループして、trueのプロパティに対して処理を行う
     for (let key in stampDB) {
@@ -300,7 +303,9 @@ if (docSnap.exists()) {
 } else {
     console.log("既存なし");
     // 既存がない場合はドキュメント単位で追加
-    setDoc(docRef,stampInitial);
+    setDoc(docRef, stampInitial);
+    stampDB = stampInitial;
+    console.log(stampDB,"既存なしstampDB");
 }
 
 /* ----- checkクリックイベント -----*/
