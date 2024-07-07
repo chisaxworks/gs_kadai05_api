@@ -281,7 +281,7 @@ let stampDB = "";
 
 /* ----- リロード時にDBから取り出し -----*/
 // データ取得
-const docRef = doc(db, "stamp", createDate);
+const docRef = doc(db, "stampinit", createDate);
 const docSnap = await getDoc(docRef);
 
 // 存在有無で分岐
